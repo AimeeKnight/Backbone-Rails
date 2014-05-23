@@ -19,7 +19,11 @@ class Blog.Views.Posts.NewView extends Backbone.View
     e.stopPropagation()
 
     @model.unset("errors")
-
+ 
+    ###
+    Create method of the backbone collection that sends a POST request to the server and saves a record.
+    Can use @model.save() instead of @collection.create() but then, the new object would not be available on the collection unless you call fetch() over the collection which sends a GET request to the given url in the collection.
+    ###
     @collection.create(@model.toJSON(),
       success: (post) =>
         @model = post
